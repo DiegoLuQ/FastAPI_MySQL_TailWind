@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: 'bitnami/mariadb:10.3'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=diego
+      - MARIADB_PASSWORD=diego123
+      - MARIADB_DATABASE=test_frutas
+    volumes:
+      - ./db_respaldo:/bitnami/mariadb
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb
+
+  app:
+    build: .
+    ports:
+      - 8002:8000
+    environment:
+      - RUTA_MYSQL=mysql+pymysql://root@mariadb:3306/test_frutas
+    restart: always
+    depends_on:
+      - mariadb
+    volumes:
+      - ./app/app/
+    links:
+      - "mariadb"
+    
+
+volumes:
+  db_respaldo:
