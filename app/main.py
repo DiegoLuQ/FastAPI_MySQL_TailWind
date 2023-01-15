@@ -14,8 +14,13 @@ def include_routers(app):
 
 def start_app():
     app = FastAPI(description="""
-    API para conocer el stock, provedor, precios de nuestras frutas
-    """, title="API de Frutas 2023 v1")
+    API para saber el 
+    - control de stock 
+    - provedor asociado
+    - precios costo/venta.
+    - control de fechas
+    Tambien para obtener informes
+    """, title="API de Productos Bodega 2023 v1")
     create_tables()
     include_routers(app)
     return app

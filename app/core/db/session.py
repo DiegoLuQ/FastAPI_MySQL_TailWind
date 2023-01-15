@@ -5,7 +5,7 @@ from core.config import settings
 
 sqlalchemy_database_url = settings.RUTA_MYSQL
 
-url_db = "mysql+pymysql://root@localhost:33306/test_frutas"
+url_db = "mysql+pymysql://root@localhost:33306/test_productos"
 engine = create_engine(sqlalchemy_database_url)
 
 #estudiar

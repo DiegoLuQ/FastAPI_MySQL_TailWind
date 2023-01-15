@@ -27,12 +27,12 @@ services:
     ports:
       - 8002:8000
     environment:
-      - RUTA_MYSQL=mysql+pymysql://root@mariadb:3306/test_frutas
+      - RUTA_MYSQL=mysql+pymysql://root@mariadb:3306/test_productos
     restart: always
     depends_on:
       - mariadb
     volumes:
-      - ./app/app/
+      - ./app:/app_d/
     links:
       - "mariadb"
     
