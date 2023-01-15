@@ -9,7 +9,12 @@ def create_tables():
 
 
 def include_routers(app):
-    app.include_router(api_router)
+    app.include_router(api_router, responses={
+        404:{"description": "Not found"},
+        422:{"description": "The data sent is not valid"},
+        500:{"description": "Unprocessable Entity"},
+        
+    })
 
 
 def start_app():
