@@ -1,0 +1,40 @@
+{% extends "base/base.html" %} {% block content %}
+<div class="bg-blue-100">
+  <div class="mt-10 flex justify-center p-4 overflow-auto">
+    <table class="rounded-lg border border-black">
+      <thead>
+        <tr class="bg-[#002357] text-white">
+          <th class="px-2 w-4 text-start py-2">n°</th>
+          <th class="px-2 w-32 text-start py-2">Nombre</th>
+          <th class="px-2 w-20 text-start py-2">Stock</th>
+          <th class="px-2 w-20 text-start py-2">Costo</th>
+          <th class="px-2 w-20 text-start py-2">Venta</th>
+          <th class="px-2 w-20 text-start py-2">Peso</th>
+          <th class="px-2 w-28 text-start py-2">-</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        {% for prod in productos %}
+
+        <tr class="hover:bg-gray-100 text-sm">
+          <td class="p-2">{{loop.index}}</td>
+          <td class="p-2">{{prod.prod_nombre}}</td>
+          <td class="p-2">{{prod.prod_stock}}</td>
+          <td class="p-2">{{prod.prod_pcosto}}</td>
+          <td class="p-2">{{prod.prod_pventa}}</td>
+          <td class="p-2">{{prod.prod_peso}}</td>
+          <td class="">
+            <div>
+              <a href="" class="text-lg p-2 rounded-lg">❌</a>
+              <a href="" class="text-lg p-2 rounded-lg">🔄</a>
+            </div>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

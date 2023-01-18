@@ -1,1 +1,14 @@
-Inicio de Proyecto 1
+<div align="center" style="color:#ff0f;"> <h1>API De Bodega</h1> </div>
+
+- FastAPI
+- Mysql
+- SqlAlchemy
+- TailWindCSS
+- Javascript
+  
+
+Inicio
+- **docker-compose up -d**
+
+En caso de no funcionar el **container app**
+- detener contenedor **app** e iniciarlo de nuevo

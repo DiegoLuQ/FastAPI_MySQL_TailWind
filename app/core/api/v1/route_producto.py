@@ -13,14 +13,14 @@ router = APIRouter()
 @router.post('/agregar')
 async def agregar_productos(model:Schemas_Productos, db:Session=Depends(get_db)):
     data = await repo_productos.add_producto(model=model, db=db)
-    return ReponseModel(201, data, "Productos Creado")
+    return ReponseModel(201, "Productos Creado", data)
 
 @router.get('/listar')
 async def listar_productos(db:Session=Depends(get_db)):
     datos = await repo_productos.get_productos(db=db)
     if not datos:
         return ReponseModel(404, "Productos no Encontrados", False)
-    return ReponseModel(200, datos, "Listado de Productos")
+    return ReponseModel(200, "Listado de Productos", datos )
 
 @router.get('/{id}')
 async def buscar_producto(id:int, db:Session=Depends(get_db)):
