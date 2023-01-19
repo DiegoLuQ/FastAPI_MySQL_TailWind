@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %} {% block content %}
+<div>
+  <div class="p-3 max-w-[400px] m-auto">
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Nombre</label>
+      <input
+        type="text"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_nombre"
+        name=""
+        id=""
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Proveedor</label>
+      <select
+        name="id_proveedor"
+        id=""
+        class="rounded-lg p-2 bg-gray-50 border dark:text-white dark:bg-gray-700 id_proveedor"
+      >
+        <option value="1" class="">Jack Corp</option>
+        <option value="2" class="">Cabo Corp</option>
+        <option value="3" class="">Aurelio Corp</option>
+      </select>
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Fecha</label>
+      <input
+        type="date"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_fecha"
+        name=""
+        id=""
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+        <label for="" class="ml-2">Stock</label>
+        <input
+          type="text"
+          class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
+          name=""
+          id=""
+        />
+      </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Peso</label>
+      <input
+        type="text"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_peso"
+        name=""
+        id=""
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Precio Venta</label>
+      <input
+        type="text"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pventa"
+        name=""
+        id=""
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Precio Costo</label>
+      <input
+        type="text"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pcosto"
+        name=""
+        id=""
+      />
+    </div>
+
+    <div class="p-2 sm:w-[150px] flex">
+      <button class="btn-registrar w-full" id="btn-registrar">Registrar</button>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script
+  src="{{url_for('static', path='/js/register.js')}}"
+  type="module"
+></script>
+{% endblock %}

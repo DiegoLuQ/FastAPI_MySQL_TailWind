@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link
       type="text/tailwindcss"
       href="{{url_for('static', path='./tail.css')}}"
@@ -14,9 +15,11 @@
   </head>
   <body>
     {% include 'components/organismos/navbar.html' %}
-    <div class=" max-w-5xl m-auto">
+    <div class="bg-blue-100 max-w-5xl m-auto" x-data>
         {% block content %} 
         {% endblock %}
     </div>
   </body>
+  {% block scripts %}
+  {% endblock %}
 </html>

@@ -1,11 +1,11 @@
 <div class="m-full">
   <nav class="max-w-5xl m-auto bg-[#005698]">
-    <ul class="flex justify-between">
+    <ul class="hidden sm:justify-between sm:flex">
       <li class="li-item">
-        <a href="" class="nav-item">Home</a>
+        <a href="http://127.0.0.1:8000/" class="nav-item">Home</a>
       </li>
       <li class="li-item">
-        <a href="" class="nav-item">Productos</a>
+        <a href="/productos" class="nav-item">Productos</a>
       </li>
       <li class="li-item">
         <a href="" class="nav-item">Proveedores</a>
@@ -14,5 +14,35 @@
         <a href="" class="nav-item">Informes</a>
       </li>
     </ul>
+    <div x-data="{open:false}" class="sm:hidden">
+      <div class="flex justify-end">
+        <button
+          x-on:click="open=!open"
+          class="m-2"
+        >
+          <img
+            src="{{url_for('static', path='img/menu.png')}}"
+            alt=""
+            class="w-full h-full"
+          />
+        </button>
+      </div>
+      <nav x-show="open" x-on:click.away="open = false">
+        <ul>
+          <li class="li-item">
+            <a href="http://127.0.0.1:8000/" class="nav-item">Home</a>
+          </li>
+          <li class="li-item">
+            <a href="/productos" class="nav-item">Productos</a>
+          </li>
+          <li class="li-item">
+            <a href="" class="nav-item">Proveedores</a>
+          </li>
+          <li class="li-item">
+            <a href="" class="nav-item">Informes</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </nav>
 </div>

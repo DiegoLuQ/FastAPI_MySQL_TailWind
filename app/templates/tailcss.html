@@ -7,6 +7,9 @@
     --bg-secundary: #0F001E;
 
   }
+  body {
+    @apply bg-[#000300]
+  }
   @layer utilities {
     .primary {
       @apply font-bold text-[#005698];
@@ -16,6 +19,9 @@
     }
     .li-item{
       @apply py-3 w-full text-center text-black hover:bg-[#0A9800] hover:duration-500 hover:ease-in-out 
+    }
+    .btn-registrar {
+      @apply py-2 px-3 bg-green-600 font-bold text-white hover:bg-green-500 rounded-lg
     }
   }
 </style>

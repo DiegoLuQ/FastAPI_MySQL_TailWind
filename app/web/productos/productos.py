@@ -13,3 +13,7 @@ router = APIRouter(include_in_schema=False)
 async def Home(request:Request, db:Session=Depends(get_db)):
     datos = await repo_productos.get_productos(db)
     return templates.TemplateResponse("productos/productos_lista.html", {"request":request, "productos": datos})
+
+@router.get('/productos')
+async def Productos(request:Request):
+    return templates.TemplateResponse('productos/register.html', {"request":request})

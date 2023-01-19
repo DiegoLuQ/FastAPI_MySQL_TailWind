@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 def ReponseModel(code,message,data):
     return {
-        "code":200,
+        "code":code,
         "message":message,
         "data":data
     }
