@@ -1,5 +1,5 @@
 console.log('Hola')
-const url = 'http://127.0.0.1:8000/v1/productos/agregar'
+const url = 'https://test-dos.diego-luque.com/v1/productos/agregar'
 const btnRegistrar = document.querySelector('#btn-registrar')
 
 btnRegistrar.addEventListener('click', obtenerDatos)
