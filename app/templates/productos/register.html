@@ -1,6 +1,9 @@
 {% extends 'base/base.html' %} {% block content %}
-<div>
+<form>
   <div class="p-3 max-w-[400px] m-auto">
+    <h1 class="font-bold text-3xl text-green-600 flex justify-center">
+      Registro de Productos
+    </h1>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Nombre</label>
       <input
@@ -8,6 +11,7 @@
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_nombre"
         name=""
         id=""
+        required
       />
     </div>
     <div class="p-2 flex flex-col">
@@ -29,21 +33,24 @@
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_fecha"
         name=""
         id=""
+        required
       />
     </div>
     <div class="p-2 flex flex-col">
-        <label for="" class="ml-2">Stock</label>
-        <input
-          type="text"
-          class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
-          name=""
-          id=""
-        />
-      </div>
+      <label for="" class="ml-2">Stock</label>
+      <input
+        type="number"
+        min="0"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
+        name=""
+        id=""
+      />
+    </div>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Peso</label>
       <input
-        type="text"
+        type="number"
+        min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_peso"
         name=""
         id=""
@@ -52,27 +59,32 @@
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Precio Venta</label>
       <input
-        type="text"
+        type="number"
+        min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pventa"
         name=""
         id=""
+        required
       />
     </div>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Precio Costo</label>
       <input
-        type="text"
+        type="number"
+        min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pcosto"
         name=""
         id=""
+        required
       />
     </div>
 
     <div class="p-2 sm:w-[150px] flex">
-      <button class="btn-registrar w-full" id="btn-registrar">Registrar</button>
+      <button type="submit" class="btn-registrar w-full" id="btn-registrar">Registrar</button>
     </div>
+    <div class="box-btn font-semibold text-2xl text-green-600 flex justify-center"></div>
   </div>
-</div>
+</form>
 {% endblock %} {% block scripts %}
 <script
   src="{{url_for('static', path='/js/register.js')}}"

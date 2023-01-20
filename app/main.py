@@ -4,6 +4,9 @@ from core.db.base_class import Base
 from core.api.base import api_router
 from web.base import web_router
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 def create_tables():
     Base.metadata.create_all(bind=engine)
@@ -23,10 +26,29 @@ def start_app():
     app = FastAPI(description="""
     API de Bodega
     """, title="API de Bodega 2023 v1")
+
+    origins = [
+    "http://127.0.0.1:8000",
+    "https://test-dos.diego-luque.com/",
+    "http://test-dos.diego-luque.com/"
+    ]
+
     create_tables()
+
     include_routers(app)
     configure_static(app)
+
+    app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
     return app
 
 
 app = start_app()
+
+
+

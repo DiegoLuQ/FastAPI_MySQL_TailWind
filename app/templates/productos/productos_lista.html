@@ -9,27 +9,44 @@
           <th class="px-2 w-20 text-start py-2">Stock</th>
           <th class="px-2 w-20 text-start py-2">Costo</th>
           <th class="px-2 w-20 text-start py-2">Venta</th>
-          <th class="px-2 w-20 text-start py-2">Peso</th>
-          <th class="px-2 w-28 text-start py-2">-</th>
+          <th class="px-2 w-20 text-start py-2 hidden sm:block">Peso</th>
+          <th class="px-2 w-16 sm:w-20 text-start py-2">-</th>
         </tr>
       </thead>
       <tbody class="">
         {% for prod in productos %}
-
-        <tr class="hover:bg-gray-100 text-sm">
+        {% if loop.index % 2 == 0 %}
+        <tr class="bg-black/20 hover:bg-gray-100 text-sm">
           <td class="p-2">{{loop.index}}</td>
           <td class="p-2">{{prod.prod_nombre}}</td>
           <td class="p-2">{{prod.prod_stock}}</td>
           <td class="p-2">{{prod.prod_pcosto}}</td>
           <td class="p-2">{{prod.prod_pventa}}</td>
-          <td class="p-2">{{prod.prod_peso}}</td>
+          <td class="p-2 hidden sm:inline">{{prod.prod_peso}}</td>
           <td class="">
             <div>
-              <a href="" class="text-lg p-2 rounded-lg">❌</a>
-              <a href="" class="text-lg p-2 rounded-lg">🔄</a>
+              <a href="" class="text-lg p-1 rounded-lg hover:bg-red-200">❌</a>
+              <a href="" class="text-lg p-1 rounded-lg hover:bg-blue-200">🔄</a>
             </div>
           </td>
         </tr>
+        {% else %}
+        <tr class="bg-black/10 hover:bg-gray-100 text-sm">
+          <td class="p-2">{{loop.index}}</td>
+          <td class="p-2">{{prod.prod_nombre}}</td>
+          <td class="p-2">{{prod.prod_stock}}</td>
+          <td class="p-2">{{prod.prod_pcosto}}</td>
+          <td class="p-2">{{prod.prod_pventa}}</td>
+          <td class="p-2 hidden sm:inline">{{prod.prod_peso}}</td>
+          <td class="">
+            <div>
+              <a href="" class="text-lg p-1 rounded-lg hover:bg-red-200">❌</a>
+              <a href="" class="text-lg p-1 rounded-lg hover:bg-blue-200">🔄</a>
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+
 
         {% endfor %}
       </tbody>
