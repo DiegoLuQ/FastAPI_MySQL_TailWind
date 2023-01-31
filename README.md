@@ -10,5 +10,3 @@
 Inicio
 - **docker-compose up -d**
 
-En caso de no funcionar el **container app**
-- detener contenedor **app** e iniciarlo de nuevo

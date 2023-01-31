@@ -32,7 +32,7 @@ async def buscar_producto(id:int, db:Session=Depends(get_db)):
 @router.delete('/eliminar_producto/{id}')
 async def eliminar_producto(id:int, db:Session=Depends(get_db)):
     dato = await repo_productos.delete_producto(id, db)
-    return dato
+    return ReponseModel(200, "producto eliminado", False)
 
 @router.patch('/{id}')
 async def parchar_producto(id:int, model: Schemas_Productos, db:Session=Depends(get_db)):

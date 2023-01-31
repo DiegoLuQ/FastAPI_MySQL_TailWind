@@ -1,23 +1,22 @@
 {% extends "base/base.html" %} {% block content %}
 <div class="">
-  <div class="pt-10 flex justify-center p-4 overflow-auto">
+  <div class="relative pt-10 flex justify-center p-4 overflow-auto">
     <table class="rounded-lg border border-black">
       <thead>
         <tr class="bg-[#002357] text-white">
-          <th class="px-2 w-4 text-start py-2">n°</th>
-          <th class="px-2 w-32 text-start py-2">Nombre</th>
-          <th class="px-2 w-20 text-start py-2">Stock</th>
-          <th class="px-2 w-20 text-start py-2">Costo</th>
-          <th class="px-2 w-20 text-start py-2">Venta</th>
-          <th class="px-2 w-20 text-start py-2 hidden sm:block">Peso</th>
-          <th class="px-2 w-16 sm:w-20 text-start py-2">-</th>
+          <th class="hidden sm:block px-2 text-start py-2 text-sm">n°</th>
+          <th class="px-2 text-start py-2 text-sm">Nombre</th>
+          <th class="px-2 text-start py-2 text-sm">Stock</th>
+          <th class="px-2 text-start py-2 text-sm">Costo</th>
+          <th class="px-2 text-start py-2 text-sm">Venta</th>
+          <th class="px-2 text-start py-2 text-sm hidden sm:block">Peso</th>
+          <th class="px-2 sm:w-8 text-start py-2 text-sm"></th>
         </tr>
       </thead>
       <tbody class="">
-        {% for prod in productos %}
-        {% if loop.index % 2 == 0 %}
+        {% for prod in productos %} {% if loop.index % 2 == 0 %}
         <tr class="bg-black/20 hover:bg-gray-100 text-sm">
-          <td class="p-2">{{loop.index}}</td>
+          <td class="hidden sm:block p-2">{{loop.index}}</td>
           <td class="p-2">{{prod.prod_nombre}}</td>
           <td class="p-2">{{prod.prod_stock}}</td>
           <td class="p-2">{{prod.prod_pcosto}}</td>
@@ -25,14 +24,18 @@
           <td class="p-2 hidden sm:inline">{{prod.prod_peso}}</td>
           <td class="">
             <div>
-              <a href="" class="text-lg p-1 rounded-lg hover:bg-red-200">❌</a>
-              <a href="" class="text-lg p-1 rounded-lg hover:bg-blue-200">🔄</a>
+              <a
+                id-data="{{prod.id_producto}}"
+                href="/productos/{{prod.id_producto}}"
+                class="p-1 rounded-lg hover:bg-blue-200"
+                >🔄</a
+              >
             </div>
           </td>
         </tr>
         {% else %}
         <tr class="bg-black/10 hover:bg-gray-100 text-sm">
-          <td class="p-2">{{loop.index}}</td>
+          <td class="hidden sm:block p-2">{{loop.index}}</td>
           <td class="p-2">{{prod.prod_nombre}}</td>
           <td class="p-2">{{prod.prod_stock}}</td>
           <td class="p-2">{{prod.prod_pcosto}}</td>
@@ -40,18 +43,20 @@
           <td class="p-2 hidden sm:inline">{{prod.prod_peso}}</td>
           <td class="">
             <div>
-              <a href="" class="text-lg p-1 rounded-lg hover:bg-red-200">❌</a>
-              <a href="" class="text-lg p-1 rounded-lg hover:bg-blue-200">🔄</a>
+              <a
+                href="/productos/{{prod.id_producto}}"
+                class="p-1 rounded-lg hover:bg-blue-200"
+                >🔄</a
+              >
             </div>
           </td>
         </tr>
-        {% endif %}
-
-
-        {% endfor %}
+        {% endif %} {% endfor %}
       </tbody>
     </table>
   </div>
 </div>
 
+{% endblock %} {% block scripts %}
+<script src="{{url_for('static', path='/js/delete-edit.js')}}"></script>
 {% endblock %}

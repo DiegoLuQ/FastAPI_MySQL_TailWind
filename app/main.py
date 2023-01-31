@@ -44,7 +44,7 @@ def start_app():
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)
+    )
     return app
 
 

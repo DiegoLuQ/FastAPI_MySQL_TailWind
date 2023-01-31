@@ -1,8 +1,36 @@
-{% extends 'base/base.html' %} {% block content %}
-<form>
+{% extends 'base/base.html' %} 
+{% block content %} 
+{% if datos %}
+<div>
+  <div class="modal-on hidden relative flex justify-center" id="">
+    <div
+      class="absolute z-[10] translate-y-[150%] bg-green-700/80 max-w-[80%] sm:w-[300px] p-3 py-4 rounded-lg"
+    >
+      <div class="flex flex-col">
+        <div class="text-bold text-white mb-3">
+          <h2 class="font-bold text-1xl">¿Desea Eliminar el Producto?</h2>
+          <div class="flex flex-col text-semibold">
+            <label for="">ID: <span>{{datos.id_producto}}</span></label>
+            <label for="">Nombre: <span>{{datos.prod_nombre}}</span></label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button
+            class="btn-sm-eliminar sm:btn-eliminar w-[40%] btneliminar"
+            id="btn-eliminar"
+          >
+            Yes
+          </button>
+          <button class="modal-off btn-sm-modificar sm:btn-modificar w-[40%]">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="p-3 max-w-[400px] m-auto">
-    <h1 class="font-bold text-3xl text-green-600 flex justify-center">
-      Registro de Productos
+    <h1 class="font-bold text-3xl text-teal-600 flex justify-center">
+      {{title}}
     </h1>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Nombre</label>
@@ -12,6 +40,114 @@
         name=""
         id=""
         required
+        value="{{datos.prod_nombre}}"
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Proveedor</label>
+      <select
+        name="id_proveedor"
+        id=""
+        class="rounded-lg p-2 bg-gray-50 border dark:text-white dark:bg-gray-700 id_proveedor"
+      >
+        <option value="{{datos.id_proveedor}}" class="">Jack Corp</option>
+        <option value="1" class="">Jack Corp</option>
+        <option value="2" class="">Cabo Corp</option>
+        <option value="3" class="">Aurelio Corp</option>
+      </select>
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Fecha</label>
+      <input
+        type="date"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_fecha"
+        name=""
+        value="{{datos.prod_fecha}}"
+        id=""
+        required
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Stock</label>
+      <div class="flex">
+        <input
+          type="number"
+          min="0"
+          class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
+          value="{{datos.prod_stock}}"
+          
+        />
+        <input
+          type="text"
+          class="idproducto rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock w-full ml-2 text-center"
+          value="{{datos.id_producto}}"
+          disabled
+        />
+      </div>
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Peso</label>
+      <input
+        type="number"
+        min="0"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_peso"
+        name=""
+        value="{{datos.prod_peso}}"
+        id=""
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Precio Venta</label>
+      <input
+        type="number"
+        min="0"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pventa"
+        name=""
+        id=""
+        value="{{datos.prod_pventa}}"
+        required
+      />
+    </div>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Precio Costo</label>
+      <input
+        type="number"
+        min="0"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pcosto"
+        name=""
+        id=""
+        value="{{datos.prod_pcosto}}"
+        required
+      />
+    </div>
+
+    <div class="p-2 flex justify-between">
+      <button type="submit" class="{{back_btn}}" id="btn-registrar">
+        {{btn}}
+      </button>
+      <button class="btn-eliminar">Eliminar</button>
+    </div>
+    <div id="boxbtn"  class="text-center font-bold text-2xl"></div>
+  </div>
+</div>
+<script
+  src="{{url_for('static', path='/js/delete-edit.js')}}"
+></script>
+{% else %}
+<div>
+  <div class="p-3 max-w-[400px] m-auto">
+    <h1 class="font-bold text-3xl text-teal-600 flex justify-center">
+      {{title}}
+    </h1>
+    <div class="p-2 flex flex-col">
+      <label for="" class="ml-2">Nombre</label>
+      <input
+        type="text"
+        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_nombre"
+        name=""
+        id=""
+        required
+        
       />
     </div>
     <div class="p-2 flex flex-col">
@@ -34,17 +170,23 @@
         name=""
         id=""
         required
+        value=0
       />
     </div>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Stock</label>
-      <input
-        type="number"
-        min="0"
-        class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
-        name=""
-        id=""
-      />
+      <div class="flex">
+        <input
+          type="number"
+          min="0"
+          class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock"
+          value=0
+        />
+        <input
+          type="text"
+          class="idproducto rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_stock w-full ml-2 text-center" disabled
+        />
+      </div>
     </div>
     <div class="p-2 flex flex-col">
       <label for="" class="ml-2">Peso</label>
@@ -52,8 +194,7 @@
         type="number"
         min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_peso"
-        name=""
-        id=""
+        value=0
       />
     </div>
     <div class="p-2 flex flex-col">
@@ -62,9 +203,8 @@
         type="number"
         min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pventa"
-        name=""
-        id=""
         required
+        value=0
       />
     </div>
     <div class="p-2 flex flex-col">
@@ -73,21 +213,24 @@
         type="number"
         min="0"
         class="rounded-lg p-2 border focus:ring-1 focus:outline-blue-400 focus:ring-blue-400 prod_pcosto"
-        name=""
-        id=""
         required
+        value=0
       />
     </div>
 
-    <div class="p-2 sm:w-[150px] flex">
-      <button type="submit" class="btn-registrar w-full" id="btn-registrar">Registrar</button>
+    <div class="p-2 flex justify-between">
+      <button class="{{back_btn}}" id="btn-registrar">{{btn}}</button>
     </div>
-    <div class="box-btn font-semibold text-2xl text-green-600 flex justify-center"></div>
+    <div id="boxbtn" class="text-center font-bold text-2xl"></div>
   </div>
-</form>
-{% endblock %} {% block scripts %}
+</div>
 <script
-  src="{{url_for('static', path='/js/register.js')}}"
-  type="module"
+  src="{{url_for('static', path='/js/productos.js')}}"
 ></script>
+{% endif %} 
+
+{% endblock %} 
+
+{% block scripts %}
+
 {% endblock %}
